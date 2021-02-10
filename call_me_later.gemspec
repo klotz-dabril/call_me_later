@@ -5,12 +5,10 @@ require_relative "lib/call_me_later/version"
 Gem::Specification.new do |spec|
   spec.name          = "call_me_later"
   spec.version       = CallMeLater::VERSION
-  # spec.authors       = ["Otto Raphael Klotz D'Abril"]
-  # spec.email         = ["klotz.dabril@gmail.com"]
+  spec.authors       = ["Otto Raphael Klotz D'Abril"]
 
-  # spec.summary       = "TODO: Write a short summary, because RubyGems requires one."
-  # spec.description   = "TODO: Write a longer description or delete this line."
-  # spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "Rack middleware for asynchronous http response."
+  spec.homepage      = "https://github.com/klotz-dabril/call_me_later"
   spec.required_ruby_version = Gem::Requirement.new(">= 3.0.0")
 
   # spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
@@ -29,5 +27,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Uncomment to register a new dependency of your gem
-  spec.add_dependency 'rack', "~> 1.0"
+  spec.add_dependency 'rack', "~> 2.0"
 end
