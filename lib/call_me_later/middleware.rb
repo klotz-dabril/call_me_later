@@ -10,9 +10,9 @@ module CallMeLater
     attr_reader :endpoint
 
 
-    def initialize(app, endpoint: nil)
+    def initialize(app, endpoint: '/reply_service')
       @app      = app
-      @endpoint = endpoint || '/reply_service'
+      @endpoint = endpoint
       @hub      = Hub.instance
     end
 
