@@ -40,5 +40,10 @@ module CallMeLater
         ]
       end
     end
+
+
+    def path_fragments(path)
+      path.split('/').reject(&:empty?)
+    end
   end
 end

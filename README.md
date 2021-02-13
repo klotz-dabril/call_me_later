@@ -2,21 +2,13 @@
 
 Rack middleware for asynchronous http request response cycle.
 
-## Installation
+The idea is to create a worker, send the worker identifier to the client
+and later resume it with arguments received via http request.
 
-Add this line to your application's Gemfile:
+Worker are implemented using fibers and run inside an event-loop in
+a separate thread so they can be created and resumed in a multithreaded
+webserver.
 
-```ruby
-gem 'call_me_later'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install call_me_later
 
 ## Usage
 
@@ -42,7 +34,7 @@ class App
     [
       '200',
       { 'Content-Type' => 'text/plain' },
-      [reply_id.to_s]
+      [reply_id.to_s] # The worker id as part of the response
     ]
   end
 end
@@ -55,7 +47,9 @@ app = Rack::Builder.new do |builder|
 end
 
 
-Rack::Handler::Thin.run(app)
+Rack::Handler::Thin.run(app) do |server|
+  server.threaded = true # Multithreaded webserver works
+end
 ```
 
 The response of `curl http://localhost:8080` will be the id of the

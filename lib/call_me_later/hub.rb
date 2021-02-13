@@ -41,10 +41,10 @@ module CallMeLater
     end
 
 
-    def resume(id, response)
+    def resume(id, response=nil)
       worker = @workers.delete(id) # TODO Thread safe? Try to break it!!
 
-      return {status: :not_found} unless worker
+      return {error: true, status: :not_found} unless worker
 
       @queue.push(
         what:     :resume,
@@ -53,7 +53,7 @@ module CallMeLater
         worker:   worker
       )
 
-      {status: :ok}
+      {success: true, status: :ok}
     end
 
 
