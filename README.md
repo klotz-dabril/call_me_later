@@ -1,6 +1,6 @@
 # CallMeLater
 
-Rack middleware for asynchronous http _request response_ cycle.
+Rack middleware for multi-step http _request response_ cycle.
 
 The idea is to create a worker, send the worker identifier to the client
 and later resume it with arguments received via http request.
